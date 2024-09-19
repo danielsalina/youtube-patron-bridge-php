@@ -1,0 +1,9 @@
+{
+  "autoload": {
+    "psr-4": {
+      "Abstractions\\": "src/Abstractions/",
+      "Bridge\\": "src/Bridge/",
+      "Implementations\\": "src/Implementations/"
+    }
+  }
+}

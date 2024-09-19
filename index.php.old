@@ -1,0 +1,40 @@
+<?php
+
+class PaymentGateway
+{
+    public function payWithCreditCard($amount)
+    {
+        echo "Pagando $amount con tarjeta de crédito.\n";
+    }
+
+    public function payWithPaypal($amount)
+    {
+        echo "Pagando $amount con PayPal.\n";
+    }
+}
+
+class Cart
+{
+    private $totalAmount;
+    private $paymentGateway;
+
+    public function __construct($totalAmount)
+    {
+        $this->totalAmount = $totalAmount;
+        $this->paymentGateway = new PaymentGateway();
+    }
+
+    public function checkout($method)
+    {
+        if ($method === 'credit') {
+            $this->paymentGateway->payWithCreditCard($this->totalAmount);
+        } elseif ($method === 'paypal') {
+            $this->paymentGateway->payWithPaypal($this->totalAmount);
+        } else {
+            echo "Método de pago no soportado.\n";
+        }
+    }
+}
+
+$cart = new Cart(100);
+$cart->checkout('paypal'); 
